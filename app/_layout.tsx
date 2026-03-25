@@ -4,10 +4,8 @@ import{useScriptStore} from '../store/scriptsStore'
 import React from 'react'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'react-native'
-import {Tabs} from 'expo-router'
 import dashBoardcolors from '../constants/dashboardColors';
-import Feather from '@expo/vector-icons/Feather';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 
 
 const Rootlayout = () => {
@@ -21,21 +19,14 @@ const Rootlayout = () => {
     <>
     <StatusBar barStyle="light-content" />
 
-    <Stack
+    <Stack 
       screenOptions={{
+        headerShown:false,
         headerStyle: {
         backgroundColor: dashBoardcolors.background.primary,
-        },
-        
+        } 
       }}
     >
-    <Stack.Screen
-      name="(tabs)"
-      options={{
-        title: "Library",
-        headerShown: false,
-      }}
-    />
   </Stack>
   </>
   )

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View ,FlatList, TouchableOpacity, TextInput, Pressable} from 'react-native'
-import React from 'react'
+import React from 'react';
+import {useRouter} from 'expo-router'
 import Themedview from '../../components/Themedview'
 import { useScriptStore } from '../../store/scriptsStore'
 import ThemedCard from '../../components/ThemedCard'
@@ -10,7 +11,9 @@ import { useFonts, PermanentMarker_400Regular } from '@expo-google-fonts/permane
 
 
 
+
 const ScriptHub = () => {
+  const router= useRouter()
 
   const [fontsLoaded] = useFonts({
     PermanentMarker_400Regular,
@@ -23,6 +26,7 @@ const ScriptHub = () => {
     router.back();
   };
 
+  const editscript= useScriptStore(state=>state.updateScript);
   const deleteScript = useScriptStore(state => state.deleteScript);
   const scripts = useScriptStore(state => state.scripts);
 
@@ -55,12 +59,17 @@ const ScriptHub = () => {
           <Entypo name="trash" size={24} color="#d10823c1" />
         </Pressable>
 
-        <Pressable>
+        <Pressable onPress={() => router.push(`/scripts/${item.id}`)}>
           <FontAwesome name="edit" size={24} color="#f5945c" />
         </Pressable>
 
-        <Pressable>
+        <Pressable
+          onPress={() => {
+            console.log('Editing script');
+            router.push(`/teleprompter/${item.id}`)}}
+        >
           <Entypo name="controller-play" size={25} color="#548af2" />
+          
         </Pressable>
       </View>
 
@@ -73,7 +82,7 @@ const ScriptHub = () => {
       <TextInput style={{width:'90%', margin:10, borderRadius:6, height:40,backgroundColor:'#262a33', paddingLeft:10 }} placeholder='Search..' placeholderTextColor={scriptListColors.text.meta}></TextInput>
       <FlatList
         data={scripts}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
       />
     </Themedview>

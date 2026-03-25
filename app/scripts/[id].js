@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { useRouter, useLocalSearchParams } from 'expo-router'
-import { useScriptStore } from '../../../store/scriptsStore'
-import Themedview from '../../../components/Themedview'
-import { scriptListColors } from '../../../constants/scriptColors';
-import dashBoardcolors from '../../../constants/dashboardColors';
-import Header from '../../../components/header';
+import { useScriptStore } from '../../store/scriptsStore'
+import Themedview from '../../components/Themedview'
+import { scriptListColors } from '../../constants/scriptColors';
+import dashBoardcolors from '../../constants/dashboardColors';
+import Header from '../../components/header';
 import { useFonts, PermanentMarker_400Regular } from '@expo-google-fonts/permanent-marker';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
@@ -84,6 +84,7 @@ const ScriptPage = () => {
             borderRadius: 8,
             backgroundColor: '#42454b',
             paddingLeft: 10,
+            color:"#ffffffec"
           }}
           placeholder="Title..."
           placeholderTextColor={scriptListColors.text.meta}
@@ -103,7 +104,8 @@ const ScriptPage = () => {
             borderRadius: 8,
             marginBottom: 20,
             backgroundColor: '#42454b',
-            padding: 10
+            padding: 10,
+            color:"#ffffffec"
           }}
         />
 
